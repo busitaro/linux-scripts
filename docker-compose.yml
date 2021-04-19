@@ -1,0 +1,15 @@
+version: "3"
+services:
+  scripts:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bash-scripts
+    volumes:
+      - .:/scripts
+    restart: always
+    working_dir: /scripts
+    command: tail -f /dev/null
+    #   bash -c "
+    #     service nginx restart &&
+    #     uwsgi --ini infra_conf/uwsgi.ini"
