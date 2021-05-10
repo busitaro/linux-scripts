@@ -18,6 +18,7 @@ function help() {
 
   Options:
     -h: ヘルプを表示
+    -d: 実行処理の最後の引数に処理対象ディレクトリを設定
 __EOF__
   exit 1
 }
@@ -45,8 +46,6 @@ function check_exec() {
 function monitor() {
   # シェルの絶対パスを取得
   local shPath=`readlink -f ${exec}` 
-  # ディレクトリ移動
-  cd ${path}
 
   while :;do
     sh ${shPath} ${params}
@@ -55,12 +54,16 @@ function monitor() {
 }
 
 # option
-while getopts :h OPT
+while getopts :hd OPT
 do
   case ${OPT} in
   h)
     shift
     help
+    ;;
+  d)
+    shift
+    FLAG_D=1
     ;;
   esac
 done
@@ -75,6 +78,10 @@ interval=$2
 exec=$3
 shift 3
 params=$@
+# -d option
+if [ -n "${FLAG_D}" ]; then
+  params="${params} ${path}"
+fi
 
 # parameters check
 check_path
