@@ -1,3 +1,5 @@
-FROM registry.access.redhat.com/ubi8/ubi:latest
+FROM centos:centos7
+RUN yum install -y epel-release \
+    && yum install -y unar
 
 WORKDIR /scripts
