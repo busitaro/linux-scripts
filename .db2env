@@ -1,0 +1,4 @@
+# Define here environment variables for db2
+export DB2_DBNAME="DB_NAME"
+export DB2_USER="DB_USER"
+export DB2_PASSWORD="DB_PASSWORD"
