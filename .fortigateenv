@@ -1,0 +1,5 @@
+# Define here environment variables for fortigate
+export FORTIGATE_ADDRESS="address_of_fortigate"
+export FORTIGATE_USER="user_of_forigate"
+export FORTIGATE_PASSWORD="password_of_fortigate"
+export FORTIGATE_PROMPT="prompt_fo_fortigate"
