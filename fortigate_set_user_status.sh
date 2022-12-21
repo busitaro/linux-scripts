@@ -14,13 +14,20 @@ function help() {
     \$1 設定するステータス("enable" or "disable")
     \$2... 設定を実施するユーザID
 
+  Remark:
+    以下の環境変数が必要
+    FORTIGATE_ADDRESS: "address_of_fortigate"
+    FORTIGATE_USER: "user_of_forigate"
+    FORTIGATE_PASSWORD: "password_of_fortigate"
+    FORTIGATE_PROMPT: "prompt_fo_fortigate"
+
   Options:
     -h: ヘルプ表示
 __EOF__
   exit 1
 }
 
-function check_staus() {
+function check_status() {
   if [ "$status" != "enable" -a "$status" != "disable" ]; then
     echo "specify \"enable\" or \"disable\" for status."
     exit 1
@@ -78,7 +85,7 @@ shift
 users=$@
 
 # parmaters check
-check_staus
+check_status
 
 # exec
 set_status_by_telnet
